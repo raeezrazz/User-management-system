@@ -1,0 +1,71 @@
+<% include('../layouts/header.ejs') %>
+
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    h1 {
+        margin-top: 20px;
+    }
+
+    form {
+        max-width: 400px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+    }
+
+    input[type="file"] {
+        margin-top: 10px;
+    }
+
+    input[type="submit"] {
+        background-color: #4caf50;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+    p {
+        color: red;
+    }
+</style>
+
+<h1>Add New User</h1>
+
+<form action="" method="post" enctype="multipart/form-data">
+    <input type="text" name="name" placeholder="Enter Name" required>
+    <br><br>
+    <input type="email" name="email" placeholder="Enter Email">
+    <br><br>
+    <input type="text" name="mno" placeholder="Enter Mobile Number" required>
+    <br><br>
+    <input type="file" name="image" required>
+    <br><br>
+    <input type="password" name="password" value="password" placeholder="Enter password" required>
+    <br><br>
+    <input type="submit" value="Add User">
+</form>
+
+<% if(typeof message !== 'undefined') { %>
+    <p><%= message %></p>
+<% } %>
+
+<% include('../layouts/footer.ejs') %>

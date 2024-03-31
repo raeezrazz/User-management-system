@@ -1,0 +1,100 @@
+<% include('../layouts/header.ejs') %>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    h3 {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    table {
+        width: 50%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    a {
+        display: block;
+        text-align: center;
+        margin: 20px 0;
+        padding: 10px;
+        background-color: #4caf50;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    a.edit-link, a.logout-link {
+        display: inline-block;
+        text-align: center;
+        margin: 10px 150px; 
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    a.edit-link:hover, a.logout-link:hover {
+        background-color: #45a049; 
+    }
+</style>
+
+
+<h3>Welcome, <%= user?.name %></h3>
+
+<table>
+    <tr>
+        <td>
+            <img src="userImages/<%= user?.image %>" alt="<%= user?.image %>" width="100px" height="100px">
+        </td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td><%= user?.email %></td>
+    </tr>
+    <tr>
+        <td>Mobile Number</td>
+        <td><%= user?.mobile %></td>
+    </tr>
+    <tr>
+        <td>Verified</td>
+        <td>
+            <% if(user?.is_varified == 1){ %>
+                <p>True</p >
+            <% } %>
+        </td>
+    </tr>
+</table>
+
+<a href="/edit?id=<%=user?._id%>" class="edit-link">Edit</a>
+<a href="/logout" class="logout-link">Logout</a>
+
+<% include('../layouts/footer.ejs') %>
+
+
+

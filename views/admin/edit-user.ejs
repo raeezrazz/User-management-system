@@ -1,0 +1,113 @@
+<% include('../layouts/header.ejs') %>
+
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    h1 {
+        margin-top: 20px;
+    }
+
+    form {
+        max-width: 400px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    input[type="radio"] {
+        margin-right: 5px;
+    }
+
+    input[type="submit"] {
+        background-color: #4caf50;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+    a {
+        display: block;
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #4caf50;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    
+    a.go {
+        display: block;
+        text-align: center;
+        margin: 10px auto; 
+        padding: 8px 15px; 
+        background-color: #4caf50;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px; 
+        width: 120px;
+    }
+   
+</style>
+
+<h1>Edit user</h1>
+
+<form action="" method="POST" class="" onsubmit="return validateForm()">
+    <input type="name" name="name" placeholder="Enter name" value="<%= user.name %>" required>
+    <br><br>
+    <input type="email" name="email" required placeholder="Enter email" value="<%= user.email %>">
+    <br><br>
+    <input type="text" name="mno" placeholder="Enter Mobile" required value="<%= user.mobile %>">
+    <br><br>
+    <label>Verified</label>
+    <input type="radio" name="verify" value="1" <% if(user.is_varified == 1){ %> checked <% } %>> <label>Verified</label>
+    <input type="radio" name="verify" value="0" <% if(user.is_varified == 0){ %> checked <% } %>> <label>Unverified</label>
+    <br><br>
+    <input type="hidden" name="id" value="<%= user._id %>">
+    <input type="submit" value="Update User">
+</form>
+
+<a href="/admin/forget" class="go">Go to Dashboard</a>
+
+<script>
+    function validateForm() {
+        var nameInput = document.querySelector('input[name="name"]');
+        var nameValue = nameInput.value.trim(); // Trim leading and trailing spaces
+
+        // Check if the name contains only spaces
+        if (!nameValue.match(/^[^\s]+$/)) {
+            alert('Invalid name format. Please enter a valid name.');
+            return false; // Prevent form submission
+        }
+
+        // Additional validation logic can be added if needed
+
+        return true; // Allow form submission
+    }
+</script>
+<% include('../layouts/footer.ejs') %>

@@ -1,0 +1,113 @@
+<% include('../layouts/header.ejs') %>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    a {
+        display: block;
+        text-align: center;
+        margin: 20px 0;
+        padding: 10px;
+        background-color: #4caf50;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    table {
+        margin: 20px auto;
+        width: 50%;
+        border-collapse: collapse;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    img {
+        max-width: 50%;
+        height: auto;
+        border-radius: 5px;
+    }
+
+    a.logout {
+        
+        /* text-align: center; */
+        margin: 20px 0;
+        padding: 10px;
+        background-color: #e74c3c;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    
+    a.dash {
+        display: block;
+        text-align: center;
+        margin: 10px auto;
+        padding: 8px 15px; 
+        background-color: #4caf50;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px; 
+        width: 120px; 
+    }
+   
+    h3, a.edit-link, a.logout-link, form input[type="submit"] {
+        display: inline-block;
+        text-align: center;
+        margin: 10px 45%; 
+        padding: 8px 15px;
+        background-color: #4caf50;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px; 
+    }
+   
+
+    h3:hover, a.edit-link:hover, a.logout-link:hover, form input[type="submit"]:hover {
+        background-color: #45a049; 
+    }
+</style>
+
+
+
+<h1>Welcome, <%= admin.name %></h1>
+
+<a href="/admin/dashboard" type="submit" class="dash">Dashboard</a>
+
+<table>
+    <tr>
+        <td><img src="/userImages/<%= admin.image %>" alt="<%= admin.img %>"></td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td><%= admin.email %></td>
+    </tr>
+    <tr>
+        <td>Mobile</td>
+        <td><%= admin.mobile %></td>
+    </tr>
+</table>
+
+
+<a href="/admin/logout" class="logout-link">Logout</a>
+
+<% include('../layouts/footer.ejs') %>
